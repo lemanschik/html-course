@@ -77,7 +77,7 @@ const pRef = useRef(null);
 
   useEffect(() => { // connectedCallback() eqivalent for react.
     const ThisHTMLElement = pRef.current);
-    Object.Assign(ThisHTMLElement,{ classList: 'react-complicated', style: { color: 'red' },onclick="this.innerHTML = 'bye'" });
+    Object.Assign(ThisHTMLElement,{ classList: 'react-complicated', style: { color: 'red' },onclick: ()=>(this.innerHTML = 'bye') });
     // <div class="react-complicated", style="color: red;" >hi</div>;
     // after clicking it innerText which is "hi" gets replaced with "bye"
   }, []);
@@ -96,20 +96,26 @@ export default function App() {
     const ThisHTMLElement = pRef.current;
     Object.assign(ThisHTMLElement,{ 
         classList: 'react-complicated', 
-        style: 'color:  red;',
-        onclick: "()=>'console.log('hi')' "
-    });
-      ThisHTMLElement.addEventListener('click',(ev)=>console.log(ev.target.outerHTML));
-      ThisHTMLElement.innerText = 'Oh my god react'
-     console.log(ThisHTMLElement);
-    // <div class="react-complicated", style="color: red;" >hi</div>;
-    // after clicking it innerText which is "hi" gets replaced with "bye"
+        style: 'color: red;',
+        onclick(){this.innerHTML = 'bye'}
+    })
   }, []);
-    return <h1 ref={pRef}>Hello world</h1>
+    return <div ref={pRef}>Hello world</div>
 }
-
-
-
 ```
 
-Note Onclick will not fire while classList works and style so you get a Limited subset of the old working dom API's i will try to find and list all quirks soon in my Why not use React Book
+```js
+import { useRef,useEffect } from 'react';
+export default function App() {
+  const pRef = useRef(null);
+
+  useEffect(() => { // connectedCallback() eqivalent for react.
+    pRef.current.replaceWith(Object.assign(document.createElement('p'),{
+      innerHTML: 'Real Free Element!',
+      onclick: (ev) => (ev.target.innerHTML = "bye")
+    }));
+    
+  }, []);
+  return <div ref={pRef}>Hello world</div>
+}
+```
