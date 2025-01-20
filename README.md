@@ -97,8 +97,9 @@ export default function App() {
     Object.assign(ThisHTMLElement,{ 
         classList: 'react-complicated', 
         style: 'color:  red;',
-        onclick: "()=>'console.log(this.innerHTML)' "
+        onclick: "()=>'console.log('hi')' "
     });
+      ThisHTMLElement.addEventListener('click',(ev)=>console.log(ev.target.outerHTML));
       ThisHTMLElement.innerText = 'Oh my god react'
      console.log(ThisHTMLElement);
     // <div class="react-complicated", style="color: red;" >hi</div>;
@@ -106,6 +107,9 @@ export default function App() {
   }, []);
     return <h1 ref={pRef}>Hello world</h1>
 }
+
+
+
 ```
 
 Note Onclick will not fire while classList works and style so you get a Limited subset of the old working dom API's i will try to find and list all quirks soon in my Why not use React Book
