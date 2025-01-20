@@ -90,7 +90,7 @@ const pRef = useRef(null);
 
   useEffect(() => { // connectedCallback() eqivalent for react.
     const ThisHTMLElement = pRef.current);
-    Object.Assign(ThisHTMLElement,{ classList: 'react-complicated', style: { color: 'red' },onclick() {(this.innerHTML = 'bye') },});
+    Object.assign(ThisHTMLElement,{ classList: 'react-complicated', style: 'color: red;' },onclick(){ (this.innerHTML = 'bye') },});
     // <div class="react-complicated", style="color: red;" >hi</div>;
     // after clicking it innerText which is "hi" gets replaced with "bye"
   }, []);
