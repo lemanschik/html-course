@@ -84,3 +84,28 @@ const pRef = useRef(null);
 
   return <div ref={pRef}>hi</div>;
 ```
+
+the above example is Pseudo code that represents how it should work however react destroys the DOM efficently so binding onclick will only work via some workarounds while classList and style do work via the String list Representation only
+
+```js
+import { useRef,useEffect } from 'react';
+export default function App() {
+  const pRef = useRef(null);
+
+  useEffect(() => { // connectedCallback() eqivalent for react.
+    const ThisHTMLElement = pRef.current;
+    Object.assign(ThisHTMLElement,{ 
+        classList: 'react-complicated', 
+        style: 'color:  red;',
+        onclick: "()=>'console.log(this.innerHTML)' "
+    });
+      ThisHTMLElement.innerText = 'Oh my god react'
+     console.log(ThisHTMLElement);
+    // <div class="react-complicated", style="color: red;" >hi</div>;
+    // after clicking it innerText which is "hi" gets replaced with "bye"
+  }, []);
+    return <h1 ref={pRef}>Hello world</h1>
+}
+```
+
+Note Onclick will not fire while classList works and style so you get a Limited subset of the old working dom API's i will try to find and list all quirks soon in my Why not use React Book
