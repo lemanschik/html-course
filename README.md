@@ -157,3 +157,9 @@ as introduced with import lection already it could be needed to load some stuff 
 For small projects most of the time a small script can replace even rollup. 
 
 
+## The Legendary NPM package named ESM
+The esm package is a cross loader it implemented futures before they got standard in NodeJS and it still does workaround things that NodeJS still does not support for example require a ESM module even when the package.json near to it states it is commonjs
+It is Needed for Projects like Electron if you want to use it without a self written ESM loader which is in general always the most best idea and done with a single line of CJS that uses import() so the dynamic Import function to retrive ESM
+
+
+
