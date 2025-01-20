@@ -38,7 +38,7 @@ class ProductListComponent extends HTMLElement {
 
 ```js
 const $ = selector => document.querySelectorAll();
-const createElement = ({tagName,...definition}) => Object.assign(document.createElement(tagName),definition);
+const createElement = ({tagName,...definition}) => Object.assign(document.createElement(tagName),definition,{ toString(){return this.outerHTML;} });
 
 // createElement({ tagName: 'div', id: 'frank', classList: 'franken-stein'})
 // <div id=​"frank" class=​"franken-stein">​</div>​
