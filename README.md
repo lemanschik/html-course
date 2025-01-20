@@ -128,3 +128,32 @@ export default function App() {
   return <div ref={pRef}>Hello world</div>
 }
 ```
+
+
+## Import Export Require and everything in between
+2015 ECMAScript got his first own Module system before we did simple put everything into a single file even when we used require that was equal to a single file where we did insert directly the code result in place.
+so that it is a single file in memory at last.
+
+with import all that changed and we invented Modules they are more isolated as the name suggests and this did prevent us from a lot of unintended errors that did come up with other methods as we could never make sure
+that a var name is only used once in a project.
+
+import only works with URL's and there is no resolve lookup pattern thats why you use the full filename with a absolute path while development and maybe also for the web. The Only way to still use Lookups and resolve
+are so called Import Maps I am not a big fan of them some do use them for code Injection and replacements. I prefer to use url parameters for that cases most of the time if needed, Avoiding such patterns is always the most clever
+as you get code that you can reason about even if your new to a project.
+
+when i do use fancy module systems like the node or typescript one then you need to learn the algos of them and they are highly complex. eg in typescript you can ref a filename without extension and it trys a lot of extensions to get the real file eg: .ts .js .d.ts and much much more......
+
+## Type Annotations
+The Language Server tooling of all most all IDE's does support so called Type Inference where he guesses the Type based on the code that is the most best Method to define types. When you need more Specific Types because your Maintaining a hugh project with many people and want to offer a extension API then it could be needed to add so called JSDOC annotations here and there
+
+## linters 
+ESLINT is maybe the most common one and even best one as it is easy to adjust and is highly modular.
+
+## Runners
+Gulp / Grunt 
+
+## Bundlers / Loaders
+as introduced with import lection already it could be needed to load some stuff as text and transpile it before you evaluate the code. Rollup solves all that needs as it supports a lot of loaders and is a framework to load stuff. 
+For small projects most of the time a small script can replace even rollup. 
+
+
