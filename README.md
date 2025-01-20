@@ -69,3 +69,18 @@ so every element has so called on* eventName handlers. eg: onclick, onresize, on
 ....more examples of combined templates with more interactions
 
 
+
+## HTML and the DOM for React users
+
+```js
+const pRef = useRef(null);
+
+  useEffect(() => { // connectedCallback() eqivalent for react.
+    const ThisHTMLElement = pRef.current);
+    Object.Assign(ThisHTMLElement,{ classList: 'react-complicated', style: { color: 'red' },onclick="this.innerHTML = 'bye'" });
+    // <div class="react-complicated", style="color: red;" >hi</div>;
+    // after clicking it innerText which is "hi" gets replaced with "bye"
+  }, []);
+
+  return <div ref={pRef}>hi</div>;
+```
