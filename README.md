@@ -52,7 +52,7 @@ HTML Is a as the Name suggests a Text Representation of the DOM it is the String
 
 ## HTML Tag Attributes
 Not all Attributes are under the equal Name on the DOM Object while they are all on the DOM Object because else nothing would work. That has historical and language related Reasons.
-For example the class attribute of a HTML Tag is always the classList attribute of the JS DOM Equivalent thats because ```class``` is a reserved keyword in ECMAScript as it gets used to create Classes.
+For example the class attribute of a HTML Tag is always the classList property of the JS DOM Equivalent thats because ```class``` is a reserved keyword in ECMAScript as it gets used to create Classes.
 all HTML Attributes that got a String List as value got ECMAScript API's to modify them so that you do not need to handle String parsing your self. 
 
 - class classList.add ....
@@ -62,7 +62,7 @@ all HTML Attributes that got a String List as value got ECMAScript API's to modi
 
 ## Listing for events
 Most of the time you will see stuff like addEventListner removeEventListner and that is not a good way as you all most always want to have only a single event handler per element or you want to combine and centralise events that happen inside a Element.
-so every element has so called on* eventName handlers. eg: onclick, onresize, onfocus ...... you can set them as attribute or programatical on the element it self.
+so every element has so called on* eventName handlers. eg: onclick, onresize, onfocus ...... you can set them as attribute or programatical on the element propertys it self eg el.onclick = 'this......'.
 
 
 ## TODO: More Examples
@@ -71,7 +71,7 @@ so every element has so called on* eventName handlers. eg: onclick, onresize, on
 
 
 ## HTML and the DOM for React users
-
+useRef returns the React Element that uses the ref={name} attribute on its current property.
 ```js
 const pRef = useRef(null);
 
